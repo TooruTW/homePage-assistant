@@ -78,7 +78,6 @@ async function getData(locationCode,authorization) {
         let result = await fetch(url)
         let rawData = await result.json()
         let byZone = await rawData.records.locations[0].location
-        console.log(rawData)
         return byZone
     } catch (error) {
         console.error(error)
@@ -99,7 +98,6 @@ function WeatherBoard(prop){
             let locationCode = weeklyWeatherCode.get(locationName)
             let responseData = await getData(locationCode, authorizationKey)
             setData(responseData)
-            console.log(responseData)
         })()
     },[locationName])
     return (
