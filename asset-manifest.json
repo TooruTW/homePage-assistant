@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/homePage-assistant/static/css/main.10d12ee1.css",
+    "main.js": "/homePage-assistant/static/js/main.b5326320.js",
+    "index.html": "/homePage-assistant/index.html",
+    "main.10d12ee1.css.map": "/homePage-assistant/static/css/main.10d12ee1.css.map",
+    "main.b5326320.js.map": "/homePage-assistant/static/js/main.b5326320.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.10d12ee1.css",
+    "static/js/main.b5326320.js"
+  ]
+}
