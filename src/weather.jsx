@@ -100,10 +100,11 @@ function WeatherBoard(prop){
             setData(responseData)
         })()
     },[locationName])
+
     return (
         <div className=" m-1 bg-slate-100 border-slate-500 px-2 border-2 rounded">
             <div className="flex justify-around my-2">
-            <select className="bg-slate-100 border-slate-500 border-b-2 w-1/5 tracking-widest text-center" onChange={handleChange}>
+            <select className="bg-slate-100 border-slate-500 border-b-2 min-w-20 tracking-widest text-center" onChange={handleChange}>
                 <option key="default" value ="default">{locationName}</option>
                 {Array.from(weeklyWeatherCode.entries()).map((element) => {
                     return (

@@ -1,11 +1,9 @@
-import { useState,useEffect } from "react";
+import { useState } from "react";
 
 const today = new Date();
 const thisDate = today.getDate()
 const thisMonth = today.getMonth()
 const thisYear = today.getFullYear()
-
-console.log(thisYear,thisMonth,thisDate)
 
 // 製作月曆序列先做處日數接這在前方插入空格 來對齊星期
 function createMonth(calender){
@@ -53,12 +51,12 @@ function CreateCalender(){
     }
 
     return (
-        <div className="m-1 bg-slate-100 border-slate-500 px-2 border-2 rounded h-4/6 flex flex-col items-center">
+        <div className="m-1 bg-slate-100 border-slate-500 p-2 border-2 rounded h-96 flex flex-col items-center gap-3">
             <div className="flex items-center tracking-widest">
                 <button onClick={()=>handleMonthUpdate("decresc")} className="border-2 w-8 h-8 flex justify-center items-center">
                     <div className="rotate-45 w-2 h-2 border-slate-500 border-l-2 border-b-2"></div>
                 </button>
-                <h1>{calender.year} {calender.month+1}</h1>
+                <h1>{calender.year} 年 {calender.month+1} 月</h1>
                 <button onClick={()=>handleMonthUpdate("increase")} className="border-2 w-8 h-8 flex justify-center items-center">
                     <div className="-rotate-45 w-2 h-2 border-slate-500 border-r-2 border-b-2"></div>
                 </button>
@@ -72,11 +70,10 @@ function CreateCalender(){
                         return (
                             <div className={`
                                 w-10 h-10 flex justify-center items-center ${
-                                    element === thisDate && calender.month === thisMonth ? "border-4 border-orange-500 rounded-full":null
+                                    element === thisDate && calender.month === thisMonth && calender.year === thisYear ? "border-4 border-orange-500 rounded-full":null
                                 }`} key={index}>{element}</div>
                         )
                        })
-                       
                     }
                 </div>
             </div>
