@@ -12,8 +12,8 @@ function Clock(){
     useEffect(()=>{
         setTime(getTime(new Date()))
     },[])
-    setInterval(()=>{setTime(getTime(new Date()))},6000)
-    return  <h1 className="text-8xl my-10 px-6 text-amber-600 bg-amber-50 rounded-full">{time[0]}:{time[1]}</h1>
+    // setInterval(()=>{setTime(getTime(new Date()))},6000)
+    return  <h1 onMouseEnter={() => setTime(getTime(new Date()))} className="text-8xl my-10 px-6 text-amber-600 bg-amber-50 rounded-full">{time[0]}:{time[1]}</h1>
 }
 
 export default Clock
