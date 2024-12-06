@@ -33,6 +33,8 @@ function deadLineCalc(theDay){
     return result
 }
 
+
+
 class Mission{
     constructor(title,object,objectInfo,content,date,time){
         this.key=`${date}-${title}`
@@ -47,13 +49,36 @@ class Mission{
 }
 
 function MissionBoard(){
-    const [missions, setMissions] = useState([])
+
+    function getLocalStorage(){
+        const missionsInLocalStorage = JSON.parse(localStorage.getItem("missions"))
+        return missionsInLocalStorage ? missionsInLocalStorage:[]
+    }
+
+    const [missions, setMissions] = useState(getLocalStorage())
+
     const title = useRef(null)
     const object = useRef(null)
     const information = useRef(null)
     const content = useRef(null)
     const date = useRef(null)
     const time = useRef(null)
+
+    // LocalStorage
+   
+    function setLocalStorage(missions){
+        localStorage.setItem("missions",JSON.stringify(missions))
+        // console.log(`save to localstorage`, missions)
+    }
+
+    useEffect(()=>{
+        getLocalStorage()
+    },[])
+
+    useEffect(()=>{
+        setLocalStorage(missions)
+    },[missions])
+
 
     function sortMissions(){
         let sortedMissions
@@ -136,7 +161,9 @@ function MissionBoard(){
                         <div name="card-container" className="border m-1 px-2 border-8 rounded h-12 overflow-hidden hover:h-auto">
                             <div name="card-main" className=" flex justify-between" >
                                 <div className="underline w-1/3 underline-offset-4 tracking-wide font-bold text-xl pb-2 bg-transparent">{item.title}</div>
-                                <div className=" w-1/3 text-right tracking-wide font-bold text-xl pb-2 bg-transparent">{deadLineCalc(item.date)}</div>
+                                <div className= {`w-1/3 text-right tracking-wide font-bold text-xl pb-2 bg-transparent 
+                                    ${deadLineCalc(item.date).length >3? "text-amber-600 underline underline-offset-4 ":"black"}
+                                    `} >{deadLineCalc(item.date)}</div>
                             </div>
         
                             <div name="card-detail" className={`bg-gray-800`}>
