@@ -15,10 +15,8 @@ function createMonth(calender){
         if(calender.missionDate.includes(element.date)) element.hasMission = true
          return element
     })   
-    
     let emptyObject = new Array(calender.firstDayOfMonth).fill(0).map(element => element = { date: ".", hasMission: false })
     monthArr.unshift(...emptyObject);    
-    console.log(monthArr)
     return monthArr
 }
 
@@ -35,13 +33,11 @@ function getMonthInfo(year,month){
             return item.date
         })
     }
-    console.log(`u got mission in these days`,allMissionDate)
     thisMonthMissionDate = allMissionDate.filter((item)=>{
         return item.slice(0,7)===`${year}-${(month + 1 ).toString().padStart(2,0)}`
     })
     thisMonthMissionDate = thisMonthMissionDate.map(item=>Number (item.slice(8)))
 
-    console.log(`thisMonth`,thisMonthMissionDate)
 
     let monthInfo = {firstDayOfMonth:daysOfMonth, daysOfMonth:dateOfMonth, missionDate:thisMonthMissionDate}
     return createMonth(monthInfo)
@@ -80,7 +76,7 @@ function CreateCalender(){
     }
 
     return (
-        <div className="m-1 bg-slate-100 border-slate-500 p-2 border-2 rounded h-96 flex flex-col items-center gap-3">
+        <div className="m-1 bg-slate-100 border-slate-500 p-2 border-2 rounded h-auto flex flex-col items-center gap-3">
             <div className="flex items-center tracking-widest">
                 <button onClick={()=>handleMonthUpdate("decresc")} className="border-2 w-8 h-8 flex justify-center items-center">
                     <div className="rotate-45 w-2 h-2 border-slate-500 border-l-2 border-b-2"></div>

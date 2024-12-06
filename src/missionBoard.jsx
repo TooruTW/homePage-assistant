@@ -4,8 +4,7 @@ const today = new Date();
 const thisDate = today.getDate().toString().padStart(2,"0")
 const thisMonth = (today.getMonth()+1).toString().padStart(2,"0")
 const thisYear = today.getFullYear().toString()
-const thisHour = today.getHours().toString().padStart(2,"0")
-const thisMinute = today.getMinutes().toString().padStart(2,"0")
+
 
 const todayInformed = `${thisYear}-${thisMonth}-${thisDate}`
 const inputStyling = `
@@ -20,7 +19,6 @@ const inputStyling = `
                     `
 
 let order = true
-console.log(thisDate,thisMonth,thisYear,todayInformed,thisHour,thisMinute)
 
 function deadLineCalc(theDay){
     let d = new Date(theDay.replaceAll("-",",")) 
@@ -32,8 +30,6 @@ function deadLineCalc(theDay){
 
     return result
 }
-
-
 
 class Mission{
     constructor(title,object,objectInfo,content,date,time){
@@ -65,7 +61,6 @@ function MissionBoard(){
     const time = useRef(null)
 
     // LocalStorage
-   
     function setLocalStorage(missions){
         localStorage.setItem("missions",JSON.stringify(missions))
         // console.log(`save to localstorage`, missions)
@@ -78,7 +73,6 @@ function MissionBoard(){
     useEffect(()=>{
         setLocalStorage(missions)
     },[missions])
-
 
     function sortMissions(){
         let sortedMissions
@@ -101,8 +95,11 @@ function MissionBoard(){
             date.current ? date.current.value:null,
             time.current ? time.current.value:null
         )
+        if(missions.some(item => item.key === newMission.key)){
+            alert(`該日有同標題事件 請更換名稱`)
+            return
+        }
         setMissions([...missions,newMission])
-
         title.current.value = `Title`;
         object.current.value= ``;
         information.current.value=``;
@@ -121,21 +118,17 @@ function MissionBoard(){
         <div className="overflow-y-scroll snap-y max-h-full">
             <div id="add">
                 <div name="card-container" className="border m-1 px-2 border-8 rounded h-14 overflow-hidden hover:h-auto">
-
                     <div name="card-main" className="flex justify-between">
                         <input ref={title} type="text" defaultValue ="Title" className={`underline underline-offset-4 ${inputStyling} text-lg w-auto`} required/>
                         <button onClick={sortMissions} className="underline rounded border-2 mt-1 py-0 px-2 text-lg w-auto bg-gray-400  tracking-wide font-bold ">sort</button>
                     </div>
-
                     <div name="card-detail" className="mt-2">
-
                         <div name="date-n-control" className="bg-inherit">
                             <div name="time&date" className="flex gap-8 mb-1">
                                 <input type="date" ref={date} className="w-full text-sm rounded text-center" defaultValue={todayInformed}  />
                                 <input type="time" ref={time} className="w-full text-sm rounded text-center"/>
                             </div>
                         </div>
-
                         <div name="detail-content" className="bg-gray-200">
                             <div name="receiver">
                                 <input type="text" ref={object} className={`underline underline-offset-4 ${inputStyling} w-full`} required placeholder="Object" />
@@ -148,8 +141,6 @@ function MissionBoard(){
                                 <button name="save" onClick={handleAdding} className="text-center mb-1 py-1 bg-gray-500 w-1/2 rounded-full">Save</button>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -165,15 +156,12 @@ function MissionBoard(){
                                     ${deadLineCalc(item.date).length >3? "text-amber-600 underline underline-offset-4 ":"black"}
                                     `} >{deadLineCalc(item.date)}</div>
                             </div>
-        
                             <div name="card-detail" className={`bg-gray-800`}>
-        
                                 <div name="date-n-control" className="bg-gray-500">
                                     <div name="time&date" className="flex gap-8">
                                         <p className="w-full text-sm"><span>{item.date}</span> <span>{item.time}</span></p>
                                     </div>
                                 </div>
-        
                                 <div name="detail-content" className="bg-gray-200 col-span-2">
                                     <div name="receiver">
                                         <p className={`tracking-wide font-bold text-m pb-2 bg-transparent`}>object: <span>{item.object}</span> <span>{item.information}</span> </p>
@@ -181,18 +169,13 @@ function MissionBoard(){
                                     <div name="content">
                                         <p className={`tracking-wide text-m pb-2 bg-transparent`}>{item.content}</p>
                                     </div>
-                                    <button name="delete" onClick={()=>{handleDelete(item.key)}} className="text-center w-full">Delete</button>
+                                    <button name="delete" onClick={()=>{handleDelete(item.key)}} className="text-center w-full rounded bg-gray-100 italic font-bold text-red-500">Delete</button>
                                 </div>
-        
-        
                             </div>
                         </div>
                     </div>
                     )})
                 }
-
-
-
             </div>
         </div>
     )
