@@ -22,11 +22,12 @@ let order = true
 
 function deadLineCalc(theDay){
     let d = new Date(theDay.replaceAll("-",",")) 
-    let result =Math.ceil((d - today)/1000/60/60/24)
+    let days = Math.ceil((d - today)/1000/60/60/24)
+    let result = `D-${days}`
 
-    if(result === 0)result = `Today`
-    if(result === 1)result = `Tomorrow`
-    if(result < 0 ) result = `Expired`
+    if(days === 0)result = `Today`
+    if(days === 1)result = `Tomorrow`
+    if(days < 0 ) result = `Expired`
 
     return result
 }
@@ -52,6 +53,7 @@ function MissionBoard(){
     }
 
     const [missions, setMissions] = useState(getLocalStorage())
+    const [isAdding,setIsAdding] = useState(`hidden`)
 
     const title = useRef(null)
     const object = useRef(null)
@@ -59,11 +61,11 @@ function MissionBoard(){
     const content = useRef(null)
     const date = useRef(null)
     const time = useRef(null)
+    const addCard = useRef(null)
 
     // LocalStorage
     function setLocalStorage(missions){
         localStorage.setItem("missions",JSON.stringify(missions))
-        // console.log(`save to localstorage`, missions)
     }
 
     useEffect(()=>{
@@ -84,6 +86,17 @@ function MissionBoard(){
         order = !order
         setMissions(sortedMissions)
         console.log(`sort`,missions)
+    }
+
+    function toggleShow(key){
+        console.log(key)
+        setMissions((prev) =>
+            prev.map((item) =>
+                item.key === key
+                    ? {...item, hidden:!item.hidden}
+                    : item
+            )
+        )
     }
 
     function handleAdding(){
@@ -114,15 +127,24 @@ function MissionBoard(){
         }))
     }
 
+    document.addEventListener("click",(event)=>{
+        if(addCard.current && addCard.current.contains(event.target)){
+            setIsAdding("")
+        }else if(addCard.current && !addCard.current.contains(event.target)){
+            setIsAdding("hidden")
+        }
+    })
+
+
     return (
         <div className="overflow-y-scroll snap-y max-h-full">
             <div id="add">
-                <div name="card-container" className="border m-1 px-2 border-8 rounded h-14 overflow-hidden hover:h-auto">
-                    <div name="card-main" className="flex justify-between">
-                        <input ref={title} type="text" defaultValue ="Title" className={`underline underline-offset-4 ${inputStyling} text-lg w-auto`} required/>
+                <div name="card-container" ref={addCard} className="border m-1 px-2 border-8 rounded h-auto">
+                    <div name="card-main" className="flex justify-between mb-2">
+                        <input ref={title} type="text" defaultValue ="Title" className={`underline w-9/12 underline-offset-4 ${inputStyling} text-lg`} required/>
                         <button onClick={sortMissions} className="underline rounded border-2 mt-1 py-0 px-2 text-lg w-auto bg-gray-400  tracking-wide font-bold ">sort</button>
                     </div>
-                    <div name="card-detail" className="mt-2">
+                    <div name="card-detail" className={isAdding}>
                         <div name="date-n-control" className="bg-inherit">
                             <div name="time&date" className="flex gap-8 mb-1">
                                 <input type="date" ref={date} className="w-full text-sm rounded text-center" defaultValue={todayInformed}  />
@@ -149,14 +171,14 @@ function MissionBoard(){
                     missions.map(item => {
                         return (
                         <div key={item.key}>
-                        <div name="card-container" className="border m-1 px-2 border-8 rounded h-12 overflow-hidden hover:h-auto">
+                        <div name="card-container" onClick={()=>toggleShow(item.key)} className={`border m-1 px-2 border-8 rounded h-auto `}>
                             <div name="card-main" className=" flex justify-between" >
-                                <div className="underline w-1/3 underline-offset-4 tracking-wide font-bold text-xl pb-2 bg-transparent">{item.title}</div>
-                                <div className= {`w-1/3 text-right tracking-wide font-bold text-xl pb-2 bg-transparent 
-                                    ${deadLineCalc(item.date).length >3? "text-amber-600 underline underline-offset-4 ":"black"}
+                                <div className="underline  h-auto w-8/12 text-wrap underline-offset-4 tracking-wide font-bold text-xl pb-2 bg-transparent">{item.title}</div>
+                                <div className= {`w-3/12 text-right tracking-wide font-bold text-xl pb-2 bg-transparent 
+                                    ${deadLineCalc(item.date)[0] !=="D"? "text-amber-600 underline underline-offset-4 ":"black"}
                                     `} >{deadLineCalc(item.date)}</div>
                             </div>
-                            <div name="card-detail" className={`bg-gray-800`}>
+                            <div name="card-detail" className={`bg-gray-800 ${item.hidden? `hidden`:`block`}`}>
                                 <div name="date-n-control" className="bg-gray-500">
                                     <div name="time&date" className="flex gap-8">
                                         <p className="w-full text-sm"><span>{item.date}</span> <span>{item.time}</span></p>
