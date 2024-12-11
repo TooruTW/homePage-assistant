@@ -77,7 +77,7 @@ async function getData(locationCode,authorization) {
     try {
         let result = await fetch(url)
         let rawData = await result.json()
-        let byZone = await rawData.records.locations[0].location
+        let byZone = await rawData.records.Locations[0].Location
         return byZone
     } catch (error) {
         console.error(error)
@@ -118,13 +118,13 @@ function WeatherBoard(prop){
             data!=="initial" && (
             data.map((location)=>{
             return (
-                    <div key ={location.locationName} className="my-l snap-center">                        
+                    <div key ={location.LocationName} className="my-l snap-center">                        
                         <ul className="w-16 mb-4 flex flex-col items-center">
-                            <li className="text-xm">{location.locationName}</li>
-                            <img className="w-12" src={weatherTypeMap.get(Number(location.weatherElement[6].time[0].elementValue[1].value)).picURL} alt={location.weatherElement[6].time[0].elementValue[0].value} />
+                            <li className="text-xm">{location.LocationName}</li>
+                            <img className="w-12" src={weatherTypeMap.get(Number(location.WeatherElement[12].Time[0].ElementValue[0].WeatherCode)).picURL} alt={location.WeatherElement[12].Time[0].ElementValue[0].Weather} />
                             <li>
-                                <span>{location.weatherElement[0].time[0].elementValue[0].value.padStart(2," ")}<span className="text-xs">%</span> </span>
-                                <span>{location.weatherElement[1].time[0].elementValue[0].value}<span className="text-xs">°C</span></span>
+                                <span>{location.WeatherElement[11].Time[0].ElementValue[0].ProbabilityOfPrecipitation.padStart(2," ")}<span className="text-xs">%</span> </span>
+                                <span>{location.WeatherElement[0].Time[0].ElementValue[0].Temperature}<span className="text-xs">°C</span></span>
                             </li>
                         </ul>                        
                     </div>
