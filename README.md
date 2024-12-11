@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# 多功能桌面助理
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+多功能桌面助理是一個由 React 開發的應用程式，搭配 Tailwind CSS 提供美觀簡潔的外觀設計。此應用程式旨在幫助用戶管理日常行程與記錄生活資訊。建議使用 Google Chrome 瀏覽器以獲得最佳體驗。
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 功能介紹
 
-### `npm start`
+### 1. 12 小時天氣概況
+- **數據來源**：天氣資訊來自 [中央氣象署氣象資料開放平台](https://opendata.cwa.gov.tw/index)。
+- **內容展示**：顯示指定區域的天氣狀態、降雨機率及平均溫度。
+- **未來計劃**：將加入更詳細且可自訂的排版方式，提供更靈活的天氣資訊查詢。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 2. 月曆
+- **基本功能**：顯示當前日期，並提供按鈕切換月份。
+- **任務整合**：在任務列表中新增任務後，月曆會自動標記該日期，方便快速查看行程。
+  
+### 3. 任務列表
+- **新增任務**：點擊列表方塊可新增任務，需填寫名稱與日期，其他資訊為選填。
+- **詳細資訊**：新增任務後，點擊任務可查看詳細內容，再次點擊即可關閉。
+- **排序功能**：點擊 `Sort` 按鈕可根據任務與今日的距離排序，支持正向與反向切換。
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 4. 臨時筆記
+- 提供簡單的筆記功能，方便記錄臨時事項或想法。
 
-### `npm test`
+### 5. 資料儲存
+- 所有資料僅儲存在瀏覽器的 LocalStorage。
+- **刪除資料**：可透過瀏覽器開發者工具中的應用程式頁面刪除 LocalStorage 內容。
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 使用建議
+- 為獲得最佳體驗，請使用最新版 Google Chrome 瀏覽器運行此應用程式。
