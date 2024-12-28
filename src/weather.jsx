@@ -31,43 +31,43 @@ const weatherTypeMap = new Map([
     [3, { weatherType: "多雲時晴", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-partly-cloudy-day-svgrepo-com.svg` }],
     [4, { weatherType: "多雲", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-cloudy-svgrepo-com.svg` }],
     [5, { weatherType: "多雲時陰", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-cloudy-svgrepo-com.svg` }],
-    [6, { weatherType: "陰天", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-cloudy-svgrepo-com.svg` }],
-    [7, { weatherType: "短暫雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-drizzle-svgrepo-com.svg` }],
+    [6, { weatherType: "陰時多雲", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-cloudy-svgrepo-com.svg` }],
+    [7, { weatherType: "陰天", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-cloudy-svgrepo-com.svg` }],
     [8, { weatherType: "陣雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-drizzle-svgrepo-com.svg` }],
-    [9, { weatherType: "雷雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-thunderstorm-svgrepo-com.svg` }],
-    [10, { weatherType: "短暫雷陣雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-thunderstorm-svgrepo-com.svg` }],
-    [11, { weatherType: "雪", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-snowflake-svgrepo-com.svg` }],
-    [12, { weatherType: "短暫雪", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-snow-svgrepo-com.svg` }],
-    [13, { weatherType: "有霧", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-fog-svgrepo-com.svg` }],
-    [14, { weatherType: "晨霧", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-fog-svgrepo-com.svg` }],
-    [15, { weatherType: "多雲短暫雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-drizzle-svgrepo-com.svg` }],
-    [16, { weatherType: "晴時多雲短暫雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-rain-showers-day-svgrepo-com.svg` }],
-    [17, { weatherType: "多雲陣雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-rain-svgrepo-com.svg` }],
-    [18, { weatherType: "晴時多雲陣雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-rain-showers-day-svgrepo-com.svg` }],
-    [19, { weatherType: "多雲短暫雷陣雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-thunderstorm-svgrepo-com.svg` }],
-    [20, { weatherType: "晴時多雲短暫雷陣雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-thunderstorm-svgrepo-com.svg` }],
-    [21, { weatherType: "晴雷陣雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-thunderstorm-svgrepo-com.svg` }],
-    [22, { weatherType: "陣雨或雷雨後多雲", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-rain-svgrepo-com.svg` }],
-    [23, { weatherType: "晴後雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-rain-showers-day-svgrepo-com.svg` }],
-    [24, { weatherType: "雨後晴", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-rain-showers-day-svgrepo-com.svg` }],
-    [25, { weatherType: "晴後陰", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-partly-cloudy-day-svgrepo-com.svg` }],
-    [26, { weatherType: "陰後晴", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-partly-cloudy-day-svgrepo-com.svg` }],
-    [27, { weatherType: "陰短暫雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-drizzle-svgrepo-com.svg` }],
-    [28, { weatherType: "陰短暫雪", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-snow-svgrepo-com.svg` }],
-    [29, { weatherType: "有雨或雪", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-rain-snow-svgrepo-com.svg` }],
-    [30, { weatherType: "晴雨交替", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-rain-showers-day-svgrepo-com.svg` }],
-    [31, { weatherType: "晴雪交替", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-hail-day-svgrepo-com.svg` }],
-    [32, { weatherType: "暴風雪", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-snowflake-svgrepo-com.svg` }],
-    [33, { weatherType: "積冰", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-snowflake-svgrepo-com.svg` }],
-    [34, { weatherType: "有霧有短暫雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-drizzle-svgrepo-com.svg` }],
-    [35, { weatherType: "有霧有短暫雪", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-snow-svgrepo-com.svg` }],
-    [36, { weatherType: "多雲短暫雨或雪", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-rain-snow-svgrepo-com.svg` }],
-    [37, { weatherType: "雷陣雨後多雲", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-thunderstorm-svgrepo-com.svg` }],
-    [38, { weatherType: "多雲雷陣雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-thunderstorm-svgrepo-com.svg` }],
-    [39, { weatherType: "短暫陣雨或雷雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-thunderstorm-svgrepo-com.svg` }],
+    [9, { weatherType: "多雲時陰短暫雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-drizzle-svgrepo-com.svg` }],
+    [10, { weatherType: "陰時多雲短暫雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-drizzle-svgrepo-com.svg` }],
+    [11, { weatherType: "雨天", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-rain-svgrepo-com.svg` }],
+    [12, { weatherType: "多雲時陰有雨", picURL: `${process.env.PUBLIC_URL}/element/weather-rain-svgrepo-com.svg` }],
+    [13, { weatherType: "陰時多雲有雨", picURL: `${process.env.PUBLIC_URL}/element/weather-rain-svgrepo-com.svg` }],
+    [14, { weatherType: "陰有雨", picURL: `${process.env.PUBLIC_URL}/element/weather-rain-svgrepo-com.svg` }],
+    [15, { weatherType: "多雲陣雨或雷雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-drizzle-svgrepo-com.svg` }],
+    [16, { weatherType: "多雲時陰陣雨或雷雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-rain-showers-day-svgrepo-com.svg` }],
+    [17, { weatherType: "陰時多雲有雷陣雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-rain-showers-day-svgrepo-com.svg` }],
+    [18, { weatherType: "陰有陣雨或雷雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-thunderstorm-svgrepo-com.svg` }],
+    [19, { weatherType: "晴午後多雲局部雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-drizzle-svgrepo-com.svg` }],
+    [20, { weatherType: "多雲午後局部雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-drizzle-svgrepo-com.svg` }],
+    [21, { weatherType: "晴午後多雲陣雨或雷雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-thunderstorm-svgrepo-com.svg` }],
+    [22, { weatherType: "多雲午後局部陣雨或雷雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-thunderstorm-svgrepo-com.svg` }],
+    [23, { weatherType: "多雲局部陣雨或雪", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-drizzle-svgrepo-com.svg` }],
+    [24, { weatherType: "晴有霧", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-fog-svgrepo-com` }],
+    [25, { weatherType: "晴時多雲有霧", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-fog-svgrepo-com` }],
+    [26, { weatherType: "多雲時晴有霧", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-fog-svgrepo-com` }],
+    [27, { weatherType: "多雲有霧", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-fog-svgrepo-com` }],
+    [28, { weatherType: "陰有霧", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-fog-svgrepo-com` }],
+    [29, { weatherType: "多雲局部雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-drizzle-svgrepo-com.svg` }],
+    [30, { weatherType: "多雲時陰局部雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-drizzle-svgrepo-com.svg` }],
+    [31, { weatherType: "多雲有霧有局部雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-drizzle-svgrepo-com.svg` }],
+    [32, { weatherType: "多雲時陰有霧有局部雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-drizzle-svgrepo-com.svg` }],
+    [33, { weatherType: "多雲局部陣雨或雷雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-drizzle-svgrepo-com.svg` }],
+    [34, { weatherType: "多雲時陰局部陣雨或雷雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-drizzle-svgrepo-com.svg` }],
+    [35, { weatherType: "多雲有陣雨或雷雨有霧", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-thunderstorm-svgrepo-com.svg` }],
+    [36, { weatherType: "多雲時陰有雷陣雨有霧", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-thunderstorm-svgrepo-com.svg` }],
+    [37, { weatherType: "多雲局部雨或雪有霧", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-fog-svgrepo-com` }],
+    [38, { weatherType: "短暫陣雨有霧", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-fog-svgrepo-com` }],
+    [39, { weatherType: "有雨有霧", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-fog-svgrepo-com` }],
     [40, { weatherType: "午後雷陣雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-thunderstorm-svgrepo-com.svg` }],
-    [41, { weatherType: "晴午後短暫雷陣雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-thunderstorm-svgrepo-com.svg` }],
-    [42, { weatherType: "多雲午後短暫雷陣雨", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-thunderstorm-svgrepo-com.svg` }]
+    [41, { weatherType: "短暫陣雨或雷雨有霧", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-thunderstorm-svgrepo-com.svg` }],
+    [42, { weatherType: "下雪", picURL: `${process.env.PUBLIC_URL}/element/weatherSvg/weather-snowflake-svgrepo-com.svg` }]
 ]);
 
 let authorizationKey=`CWA-2FF9CA6F-7CE3-45AE-B9E1-AB4183199775`
@@ -118,14 +118,15 @@ function WeatherBoard(prop){
             data!=="initial" && (
             data.map((location)=>{
             return (
-                    <div key ={location.LocationName} className="my-l snap-center">                        
-                        <ul className="w-16 mb-4 flex flex-col items-center">
+                    <div key ={location.LocationName} className="my-l w-1/6  snap-center">                        
+                        <ul className="mb-4 flex flex-col items-center">
                             <li className="text-xm">{location.LocationName}</li>
-                            <img className="w-12" src={weatherTypeMap.get(Number(location.WeatherElement[12].Time[0].ElementValue[0].WeatherCode)).picURL} alt={location.WeatherElement[12].Time[0].ElementValue[0].Weather} />
-                            <li>
-                                <span>{location.WeatherElement[11].Time[0].ElementValue[0].ProbabilityOfPrecipitation.padStart(2," ")}<span className="text-xs">%</span> </span>
+                            <img className="w-auto px-3" src={weatherTypeMap.get(Number(location.WeatherElement[12].Time[0].ElementValue[0].WeatherCode)).picURL} alt={location.WeatherElement[12].Time[0].ElementValue[0].Weather} />
+                            <li className="w-full flex justify-around ">
+                                <span>{location.WeatherElement[11].Time[0].ElementValue[0].ProbabilityOfPrecipitation.padStart(2," ")}<span className="text-xs">%</span></span>
                                 <span>{location.WeatherElement[0].Time[0].ElementValue[0].Temperature}<span className="text-xs">°C</span></span>
                             </li>
+                            
                         </ul>                        
                     </div>
                 )}))}
