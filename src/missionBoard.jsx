@@ -42,6 +42,7 @@ class Mission{
         this.date = date;
         this.time = time;
         this.hidden = true;
+        this.state = `Edit`;
     }
 }
 
@@ -53,7 +54,7 @@ function MissionBoard(){
     }
 
     const [missions, setMissions] = useState(getLocalStorage())
-    const [isAdding,setIsAdding] = useState(`hidden`)
+    const [isShowing,setIsShowing] = useState(`hidden`)
 
     const title = useRef(null)
     const object = useRef(null)
@@ -62,6 +63,8 @@ function MissionBoard(){
     const date = useRef(null)
     const time = useRef(null)
     const addCard = useRef(null)
+
+    const editBTN = useRef(null)
 
     // LocalStorage
     function setLocalStorage(missions){
@@ -89,7 +92,6 @@ function MissionBoard(){
     }
 
     function toggleShow(key){
-        console.log(key)
         setMissions((prev) =>
             prev.map((item) =>
                 item.key === key
@@ -127,11 +129,29 @@ function MissionBoard(){
         }))
     }
 
+    function handleEdit(itemKey){
+        let target = missions.findIndex(item => item.key === itemKey)
+        missions[target].state = missions[target].state === `Edit`? `Done`:`Edit`;
+        
+        console.log( missions[target].state)
+
+        title.current.value = missions[target].title;
+        object.current.value= missions[target].object;
+        information.current.value= missions[target].objectInfo;
+        content.current.value=missions[target].content;
+        date.current.value= missions[target].date;
+        time.current.value= missions[target].time;
+
+        handleDelete(itemKey)
+        setIsShowing("")
+    }
+
     document.addEventListener("click",(event)=>{
+
         if(addCard.current && addCard.current.contains(event.target)){
-            setIsAdding("")
-        }else if(addCard.current && !addCard.current.contains(event.target)){
-            setIsAdding("hidden")
+            setIsShowing("")
+        }else if(addCard.current && event.target.id === "background"){
+            setIsShowing("hidden")
         }
     })
 
@@ -142,9 +162,9 @@ function MissionBoard(){
                 <div name="card-container" ref={addCard} className="border m-1 px-2 border-8 rounded h-auto">
                     <div name="card-main" className="flex justify-between mb-2">
                         <input ref={title} type="text" defaultValue ="Title" className={`underline w-9/12 underline-offset-4 ${inputStyling} text-lg`} required/>
-                        <button onClick={sortMissions} className="underline rounded border-2 mt-1 py-0 px-2 text-lg w-auto bg-gray-400  tracking-wide font-bold ">sort</button>
+                        <button onClick={sortMissions} className="rounded border-2 mt-1 py-0 px-2 text-lg w-auto bg-gray-400  tracking-wide font-bold ">sort</button>
                     </div>
-                    <div name="card-detail" className={isAdding}>
+                    <div name="card-detail" className={isShowing}>
                         <div name="date-n-control" className="bg-inherit">
                             <div name="time&date" className="flex gap-8 mb-1">
                                 <input type="date" ref={date} className="w-full text-sm rounded text-center" defaultValue={todayInformed}  />
@@ -171,27 +191,61 @@ function MissionBoard(){
                     missions.map(item => {
                         return (
                         <div key={item.key}>
-                        <div name="card-container" onClick={()=>toggleShow(item.key)} className={`border m-1 px-2 border-8 rounded h-auto `}>
-                            <div name="card-main" className=" flex justify-between" >
-                                <div className="underline  h-auto w-8/12 text-wrap underline-offset-4 tracking-wide font-bold text-xl pb-2 bg-transparent">{item.title}</div>
-                                <div className= {`w-3/12 text-right tracking-wide font-bold text-xl pb-2 bg-transparent 
+
+                        <div name="card-container" className={`border m-1 px-2 border-8 rounded h-auto`}>
+
+                            <div name="card-main" className="flex justify-between items-center m-2" >
+                                <div className="w-1/2 flex items-center">
+                                    <div onClick={()=>toggleShow(item.key)} className = {`w-6 h-6 flex justify-center items-center ${item.hidden? `-rotate-45`:`rotate-45`}`}>
+                                        <div className="w-3 h-3 border-b-4 border-r-4 border-gray-500"></div>
+                                    </div>
+
+                                    <div className="ml-4 h-full w-8/12 text-wrap tracking-wide font-bold text-xl bg-transparent">
+
+                                    <span>{item.title}</span>
+                                    
+                                    </div>
+
+                                </div>
+                                <div className= {`w-3/12 text-right tracking-wide font-bold text-xl bg-transparent 
                                     ${deadLineCalc(item.date)[0] !=="D"? "text-amber-600 underline underline-offset-4 ":"black"}
-                                    `} >{deadLineCalc(item.date)}</div>
+                                    `} >{deadLineCalc(item.date)}
+                                </div>
                             </div>
+
                             <div name="card-detail" className={`bg-gray-800 ${item.hidden? `hidden`:`block`}`}>
                                 <div name="date-n-control" className="bg-gray-500">
+
                                     <div name="time&date" className="flex gap-8">
                                         <p className="w-full text-sm"><span>{item.date}</span> <span>{item.time}</span></p>
                                     </div>
+
                                 </div>
                                 <div name="detail-content" className="bg-gray-200 col-span-2">
+
                                     <div name="receiver">
-                                        <p className={`tracking-wide font-bold text-m pb-2 bg-transparent`}>object: <span>{item.object}</span> <span>{item.information}</span> </p>
+                                        <p className={`tracking-wide font-bold text-m pb-2 bg-transparent`}>
+                                            object: 
+                                            <span>{item.object}</span>
+                                        </p>
+                                        <p className={`tracking-wide font-bold text-m pb-2 bg-transparent`}>
+                                            object Info: <span>{item.objectInfo}</span>
+                                        </p>
                                     </div>
+
                                     <div name="content">
                                         <p className={`tracking-wide text-m pb-2 bg-transparent`}>{item.content}</p>
                                     </div>
-                                    <button name="delete" onClick={()=>{handleDelete(item.key)}} className="text-center w-full rounded bg-gray-100 italic font-bold text-red-500">Delete</button>
+
+
+                                    <div className="flex justify-around">
+                                    <button name="delete" ref={editBTN} onClick={()=>{handleEdit(item.key)}} className="text-center w-1/3 rounded bg-orange-500 italic font-bold text-gray-100">
+                                        {item.state}
+                                        </button>
+                                    <button name="delete" onClick={()=>{handleDelete(item.key)}} className="text-center w-1/3 rounded bg-red-500 italic font-bold text-gray-100">
+                                        Delete
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
