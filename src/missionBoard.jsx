@@ -192,22 +192,20 @@ function MissionBoard(){
                         return (
                         <div key={item.key}>
 
-                        <div name="card-container" className={`border m-1 px-2 border-8 rounded h-auto`}>
+                        <div name="card-container" className={`border m-1 border-8 rounded h-auto`}>
 
-                            <div name="card-main" className="flex justify-between items-center m-2" >
-                                <div className="w-1/2 flex items-center">
-                                    <div onClick={()=>toggleShow(item.key)} className = {`w-6 h-6 flex justify-center items-center ${item.hidden? `-rotate-45`:`rotate-45`}`}>
-                                        <div className="w-3 h-3 border-b-4 border-r-4 border-gray-500"></div>
-                                    </div>
-
-                                    <div className="ml-4 h-full w-8/12 text-wrap tracking-wide font-bold text-xl bg-transparent">
-
-                                    <span>{item.title}</span>
+                            <div name="card-main" className="flex justify-between items-center" >
+                                <div className="w-9/12 border-2 flex items-center">
                                     
+                                    <div onClick={()=>toggleShow(item.key)} className = {`w-6 h-6 flex justify-center items-center ${item.hidden? `-rotate-45`:`rotate-45`}`}>
+                                        <div className="w-2 h-2 border-b-4 border-r-4 border-gray-500"></div>
+                                    </div>
+                                    <div className="ml-1 h-full w-8/12 text-wrap tracking-wide font-bold text-xl bg-transparent">
+                                        <span>{item.title}</span>
                                     </div>
 
                                 </div>
-                                <div className= {`w-3/12 text-right tracking-wide font-bold text-xl bg-transparent 
+                                <div className= {`w-3/12 border-2 pr-1 text-right tracking-wide font-bold text-xl bg-transparent 
                                     ${deadLineCalc(item.date)[0] !=="D"? "text-amber-600 underline underline-offset-4 ":"black"}
                                     `} >{deadLineCalc(item.date)}
                                 </div>
