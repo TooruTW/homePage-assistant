@@ -15,6 +15,7 @@ function createMonth(calender){
         if(calender.missionDate.includes(element.date)) element.hasMission = true
          return element
     })   
+    //對齊第一天是星期幾
     let emptyObject = new Array(calender.firstDayOfMonth).fill(0).map(element => element = { date: ".", hasMission: false })
     monthArr.unshift(...emptyObject);    
     return monthArr
@@ -38,16 +39,15 @@ function getMonthInfo(year,month){
     })
     thisMonthMissionDate = thisMonthMissionDate.map(item=>Number (item.slice(8)))
 
-
     let monthInfo = {firstDayOfMonth:daysOfMonth, daysOfMonth:dateOfMonth, missionDate:thisMonthMissionDate}
     return createMonth(monthInfo)
 }
-
+//渲染行事曆
 function CreateCalender(){
     let initialCalender = getMonthInfo(thisYear,thisMonth)
 
     const [calender,setCalender] = useState({year:thisYear,month:thisMonth,calenderArr:initialCalender})
-
+//前後月功能
     function handleMonthUpdate(direction){
        setCalender((prev)=>{
         let newYear , newMonth;

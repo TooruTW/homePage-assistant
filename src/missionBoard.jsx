@@ -177,7 +177,7 @@ function MissionBoard(){
                                 <input type="text" ref={information} className={`underline underline-offset-4 ${inputStyling} w-full`} required placeholder="Contact information"/>
                             </div>
                             <div name="content">
-                                <input type="text" ref={content}  className={`${inputStyling} w-full`} placeholder="Content"/>
+                                <textarea type="text" ref={content}  className={`${inputStyling} w-full`} placeholder="Content"/>
                             </div>
                             <div className="w-full flex justify-center">
                                 <button name="save" onClick={handleAdding} className="text-center mb-1 py-1 bg-gray-500 w-1/2 rounded-full">Save</button>
@@ -232,7 +232,7 @@ function MissionBoard(){
                                     </div>
 
                                     <div name="content">
-                                        <p className={`tracking-wide text-m pb-2 bg-transparent`}>{item.content}</p>
+                                        <p className={`tracking-wide text-m pb-2 bg-transparent whitespace-pre-wrap`}>{item.content}</p>
                                     </div>
 
 
